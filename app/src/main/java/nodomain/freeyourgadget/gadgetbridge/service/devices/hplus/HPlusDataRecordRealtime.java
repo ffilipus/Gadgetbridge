@@ -62,6 +62,16 @@ class HPlusDataRecordRealtime extends HPlusDataRecord {
     public int activeTime;
 
     /**
+     * Blood pressure - Systolic
+     */
+    public int bloodMeasSbp;
+
+    /**
+     * Blood pressure - Diastolic
+     */
+    public int bloodMeasDbp;
+
+    /**
      * Computing intensity
      * To be calculated appropriately
      */
@@ -99,6 +109,8 @@ class HPlusDataRecordRealtime extends HPlusDataRecord {
                 intensity = (int) ((100 * heartRate) / (208 - 0.7 * age));
                 activityKind = HPlusDataRecord.TYPE_REALTIME;
             }
+            bloodMeasSbp = (data[10] & 0xFF);
+            bloodMeasDbp = (data[12] & 0xFF);
         }
     }
 

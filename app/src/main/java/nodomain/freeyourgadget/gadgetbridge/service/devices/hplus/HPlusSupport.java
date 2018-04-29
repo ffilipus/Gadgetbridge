@@ -906,6 +906,7 @@ public class HPlusSupport extends AbstractBTLEDeviceSupport {
             String DEVINFO_DISTANCE = getContext().getString(R.string.distance) + ": ";
             String DEVINFO_CALORY = getContext().getString(R.string.calories) + ": ";
             String DEVINFO_HEART = getContext().getString(R.string.charts_legend_heartrate) + ": ";
+            String DEVINFO_PRESS = "SBP/DBP: ";
 
             String info = "";
             if (record.steps > 0) {
@@ -919,6 +920,10 @@ public class HPlusSupport extends AbstractBTLEDeviceSupport {
             }
             if (record.heartRate > 0) {
                 info += DEVINFO_HEART + String.valueOf(record.heartRate) + "   ";
+            }
+            if (record.bloodMeasSbp > 0 && record.bloodMeasDbp > 0) {
+                info += DEVINFO_PRESS + String.valueOf(record.bloodMeasSbp) + "/" +
+                        String.valueOf(record.bloodMeasDbp) + "   ";
             }
 
             if (!info.equals("")) {
